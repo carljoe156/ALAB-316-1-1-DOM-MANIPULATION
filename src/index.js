@@ -44,7 +44,15 @@ topMenuEl.style.backgroundColor = "var(--top-menu-bg)";
 topMenuEl.classList.add("flex-around");
 
 //Part 3
-menuLinks.forEach(link => {
+// Menu data structure
+var menuLinks = [
+  { text: "about", href: "/about" },
+  { text: "catalog", href: "/catalog" },
+  { text: "orders", href: "/orders" },
+  { text: "account", href: "/account" },
+];
+
+menuLinks.forEach((link) => {
     const newEl = document.createElement("a");
     newEl.href = link.href;
     newEl.textContent = link.text;
@@ -79,11 +87,12 @@ var menuLinks = [
   ]},
 ];
 
+//const topMenuEl = document.querySelector("top-menu");
 const topMenuLinks = topMenuEl.querySelectorAll('a');
 topMenuEl.addEventListener('click',function(event) {
  event.preventDefault();
 
-if (event.target.tagName !== 'A') return;
+if (event.target.tagName !== 'a') return;
 console.log('Clicked on:', event.target.textContent.toLowerCase()); 
 
 topMenuLinks.forEach(link => link.classList.remove('active'));
@@ -121,7 +130,7 @@ topMenuEl.addEventListener('click', function(event) {
  console.log(event.target.textContent);
 
  //topMenuEl.querySelectorAll('a').forEach(link => {
-  topMenuLinks.forEach(link => {    //can remove
+  topMenuLinks.forEach(link => {    
   link.classList.remove('active'); // Should remove active class from all links
 });
 event.target.classList.toggle('active');
@@ -149,6 +158,7 @@ const linkText = event.target.textContent.trim().toLowerCase();
     mainEl.innerHTML = '<h1>About</h1>';
   } else {
     mainEl.innerHTML = `<h1>${event.target.textContent}</h1>`;
+    
   }
 });
 

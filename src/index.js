@@ -49,7 +49,7 @@ menuLinks.forEach(link => {
     newEl.href = link.href;
     newEl.textContent = link.text;
     topMenuEl.appendChild(newEl);
-})
+});
 //Fix above code Part 3
 //DOM PART TWO
 // Sub-Menu
@@ -60,41 +60,39 @@ menuLinks.forEach(link => {
  subMenuEl.style.position = "absolute";
  subMenuEl.style.top = "0";
 
-//menuLinks Array of Objects Adding Menu Interaction Part 4
-// var menuLinks = [
-//   {text: 'about', href: '/about'},
-//   {text: 'catalog', href: '#', subLinks: [
-//     {text: 'all', href: '/catalog/all'},
-//     {text: 'top selling', href: '/catalog/top'},
-//     {text: 'search', href: '/catalog/search'},
-//   ]},
-//   {text: 'orders', href: '#' , subLinks: [
-//     {text: 'new', href: '/orders/new'},
-//     {text: 'pending', href: '/orders/pending'},
-//     {text: 'history', href: '/orders/history'},
-//   ]},
-//   {text: 'account', href: '#', subLinks: [
-//     {text: 'profile', href: '/account/profile'},
-//     {text: 'sign out', href: '/account/signout'},
-//   ]},
-// ];
+// menuLinks Array of Objects Adding Menu Interaction Part 4
+var menuLinks = [
+  {text: 'about', href: '/about'},
+  {text: 'catalog', href: '#', subLinks: [
+    {text: 'all', href: '/catalog/all'},
+    {text: 'top selling', href: '/catalog/top'},
+    {text: 'search', href: '/catalog/search'},
+  ]},
+  {text: 'orders', href: '#' , subLinks: [
+    {text: 'new', href: '/orders/new'},
+    {text: 'pending', href: '/orders/pending'},
+    {text: 'history', href: '/orders/history'},
+  ]},
+  {text: 'account', href: '#', subLinks: [
+    {text: 'profile', href: '/account/profile'},
+    {text: 'sign out', href: '/account/signout'},
+  ]},
+];
 
 const topMenuLinks = topMenuEl.querySelectorAll('a');
 topMenuEl.addEventListener('click',function(event) {
  event.preventDefault();
 
-if (event.target.tagName !== 'a') return;
+if (event.target.tagName !== 'A') return;
 console.log('Clicked on:', event.target.textContent.toLowerCase()); 
 
-//Active class On/Off switch --I'm getting issues getting it to turn off
-//const clickedLink = array,from(topMenuLinks).find(link => link === event.target);
 topMenuLinks.forEach(link => link.classList.remove('active'));
 event.target.classList.toggle('active');
-// if (event.target.classList.contains('active')) {
-//   event.target.classList.remove('active');
-// } else {
-//   event.target.classList.add('active');
-// }
+ if (event.target.classList.contains('active')) {
+  event.target.classList.remove('active');
+} else {
+  event.target.classList.add('active');
+}
 
 });
 
@@ -103,6 +101,7 @@ event.target.classList.toggle('active');
 function buildSubMenu(subLinks) {
   const subMenuEl = document.getElementById("sub-menu");
   subMenuEl.innerHTML = '';
+
   if (!subLinks || subLinks.length === 0) {
     subMenuEl.style.display = 'none';
     return;
